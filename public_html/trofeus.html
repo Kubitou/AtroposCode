@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="cssCred/navbarcred.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2f1d3d">
+    <title>Troféis</title>
+  </head>
+  <body class="bodyAtro" onload="desbloqueia()">
+    <!-- NAVBAR -------------------------------------------------------------------------------------------------------------------------- -->
+    <div class="navbarCred">
+      <div class="navVolta">
+        <a class="volta" onclick="verificaUsu()"><</a>
+      </div>
+      <div class="logo">
+          <img src="img/logoNavBar.png" alt="">
+      </div>
+      <div></div>
+    </div>
+    <!-- MAIN 1.7 -------------------------------------------------------------------------------------------------------------------------- -->
+    <div class="mainTrofeu">
+      <div>
+        <h1 class="titulosPontos">Pontos</h1>
+        <div class="trofeusDePontos">
+          <div class="trofeuMob">
+            <div class="divTrofeu100P">
+              <img
+                id="trofeu100P"
+                class="trofeu100P"
+                src="imgTrofeus/pontos/100_UL.png"
+              />
+              <progress value="0" max="100"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">100 Pontos</span>
+            </div>
+            <div class="divTrofeu250P">
+              <img
+                id="trofeu250P"
+                class="trofeu250P"
+                src="imgTrofeus/pontos/250_UL.png"
+              />
+              <progress value="0" max="250"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">250 Pontos</span>
+            </div>
+          </div>
+          <div class="trofeuMob">
+            <div class="divTrofeu500P">
+              <img
+                id="trofeu500P"
+                class="trofeu500P"
+                src="imgTrofeus/pontos/500_UL.png"
+              />
+              <progress value="0" max="500"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">500 Pontos</span>
+            </div>
+            <div class="divTrofeu750P">
+              <img
+                id="trofeu750P"
+                class="trofeu750P"
+                src="imgTrofeus/pontos/750_UL.png"
+              />
+              <progress value="0" max="750"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">750 Pontos</span>
+            </div>
+          </div>
+          <div class="trofeuMob">
+            <div class="divTrofeu1000P">
+              <img
+                id="trofeu1000P"
+                class="trofeu1000P"
+                src="imgTrofeus/pontos/1000_UL.png"
+              />
+              <progress value="0" max="1000"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">1000 Pontos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- OFENSIVA -->
+      <div>
+        <h1 class="titulosOfensiva">Ofensiva</h1>
+        <div class="trofeusDeOfensiva">
+          <div class="trofeuMob">
+            <div class="divTrofeu7">
+              <img
+                id="trofeu7"
+                class="trofeu7"
+                src="imgTrofeus/ofensiva/7_lock.png"
+              />
+              <progress value="0" max="7"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">7 Dias</span>
+            </div>
+            <div class="divTrofeu30">
+              <img
+                id="trofeu30"
+                class="trofeu30"
+                src="imgTrofeus/ofensiva/30_lock.png"
+              />
+              <progress value="0" max="30"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">30 Dias</span>
+            </div>
+          </div>
+          <div class="trofeuMob">
+            <div class="divTrofeu60">
+              <img
+                id="trofeu60"
+                class="trofeu60"
+                src="imgTrofeus/ofensiva/60_lock.png"
+              />
+              <progress value="0" max="60"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">60 Dias</span>
+            </div>
+            <div class="divTrofeu180">
+              <img
+                id="trofeu180"
+                class="trofeu180"
+                src="imgTrofeus/ofensiva/180_lock.png"
+              />
+              <progress value="0" max="180"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">180 Dias</span>
+            </div>
+          </div>
+          <div class="trofeuMob">
+            <div class="divTrofeu270">
+              <img
+                id="trofeu270"
+                class="trofeu270"
+                src="imgTrofeus/ofensiva/270_lock.png"
+              />
+              <progress value="0" max="270"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">270 Dias</span>
+            </div>
+            <div class="divTrofeu365">
+              <img
+                id="trofeu365"
+                class="trofeu365"
+                src="imgTrofeus/ofensiva/365_lock.png"
+              />
+              <progress value="0" max="365"></progress>
+              <span class="porcentagem" id="">0%</span>
+              <span class="porcentagem">365 Dias</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER -------------------------------------------------------------------------------------------------------------------------- -->
+  </body>
+  <script src="js/jsTrofeus.js"></script>
+</html>

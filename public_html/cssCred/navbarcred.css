@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+.navbarCred{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px 20px; 
+    background-color: #dec08a;
+    height: 9vh;
+}
+.navbarCred a{
+    font-size: 2rem;
+    font-family: "Zain", sans-serif;
+}
+.navbarCred h1{
+    margin-left: 1vw;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    font-family: "Zain", sans-serif;
+}
+.volta{
+    cursor: pointer;
+}

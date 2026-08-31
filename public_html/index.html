@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2f1d3d">
+    <title>Atropos</title>
+  </head>
+  <body class="bodyMenu">
+    <div id="loadingOverlay">
+      <img class="spinner" src="img/iconeLoading.png" alt="" />
+      <p>Carregando...</p>
+    </div>
+    <div id="content" class="content">
+      <!-- NAVBAR -------------------------------------------------------------------------------------------------------------------------- -->
+      <div class="navbar">
+        <div class="imget">
+          <img class="imagemnav" src="img/logoP.png" alt="" />
+          <h1>Atropos - Organize sua vida escolar</h1>
+        </div>
+
+        <button class="menu-toggle" aria-label="Abrir menu">
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="menu-items">
+          <button class="button-login" onclick="abrirLogin()">Login</button>
+          <button class="button-cad" onclick="abrirCadastro()">Cadastro</button>
+          <a class="aCred" href="creditos.html">Créditos</a>
+        </div>
+      </div>
+      <!-- MAIN 1.7 -------------------------------------------------------------------------------------------------------------------------- -->
+      <div class="fundo"></div>
+      <div class="main">
+        <div class="submain">
+          <div class="e1 center-flex">
+            <p>
+              <span class="text-normal">QUEM SOMOS</span>
+              <span class="text-hover">
+                Somos um grupo de estudantes desenvolvendo este TCC com muito
+                empenho. Bem-vindo ao Atropos — seu website pessoal para
+                organizar suas matérias escolares com praticidade e motivação.
+                Fique à vontade para explorar todos os recursos!
+              </span>
+            </p>
+          </div>
+          <div class="e2 center-flex">
+            <p>
+              <span class="text-normal">ORGANIZE SUA AGENDA</span>
+              <span class="text-hover">
+                Organize suas matérias por cor, prioridade e prazos em nosso
+                calendário interativo. Suas tarefas também aparecerão
+                automaticamente na lista de atividades, gerando pontos conforme
+                forem concluídas!
+              </span>
+            </p>
+          </div>
+          <div class="e3 center-flex">
+            <p>
+              <span class="text-normal">GANHE TROFÉUS</span>
+              <span class="text-hover">
+                Cada tarefa realizada acumula pontos, e esses pontos podem ser
+                trocados por troféus! Conquiste recompensas, suba de nível e
+                mostre aos seus amigos o quanto você está comprometido com seus
+                estudos!
+              </span>
+            </p>
+          </div>
+          <div class="e4 center-flex">
+            <p>
+              <span class="text-normal">ENTRE TODO DIA!</span>
+              <span class="text-hover">
+                Com nosso sistema de ofensiva diária, incentivamos você a entrar
+                no Atropos todos os dias! Assim, você mantém a rotina em dia,
+                não perde nenhuma tarefa e garante uma jornada de estudos mais
+                organizada e produtiva.
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="img-container">
+          <img class="imgmain" src="img/logo.jpg" alt="" />
+        </div>
+      </div>
+      <!-- FOOTER -------------------------------------------------------------------------------------------------------------------------- -->
+      <footer>
+        <p>Atropos</p>
+        <p>|</p>
+        <a onclick="fecharCadastro(), abrirLogin()" class="loginclick"
+          ><p>Login</p></a
+        >
+        <p>|</p>
+        <a onclick="abrirCadastro(), fecharLogin()" class="cadastroClick"
+          ><p>Cadastro</p></a
+        >
+        <p>|</p>
+        <a href="creditos.html"><p>Créditos</p></a>
+      </footer>
+      <!-- LOGIN BOX -->
+      <form onsubmit="event.preventDefault(); login(event);">
+        <div id="loginOverlay" class="login-overlay">
+          <div class="login-box">
+            <button class="close-btn" onclick="fecharLogin()">X</button>
+            <h2>Login</h2>
+            <label for="email">Email:</label>
+            <div class="divInputEmail">
+              <i class="fas fa-user-alt"></i>
+              <input
+                type="email"
+                id="emailLog"
+                placeholder="Digite seu email"
+                required
+              />
+            </div>
+            <label for="senha">Senha:</label>
+            <div class="divInputEmail">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                id="senhaLog"
+                placeholder="Digite sua senha"
+                required
+                onpaste="return false"
+                oncopy="return false"
+                oncut="return false"
+                ondrop="return false"
+              />
+              <i
+                onclick="mostraSenhaLog()"
+                id="olhoSenhaLog"
+                class="fa fa-eye"
+                aria-hidden="true"
+              ></i>
+            </div>
+            <div class="naoTem">
+              <p onclick="abrirCadastro(); fecharLogin();">
+                Não tem cadastro ? <a>Clique aqui</a>
+              </p>
+              <a class="esqueceu" onclick="esqueceuSenha()"
+                >Esqueceu a senha ?</a
+              >
+            </div>
+            <button type="submit" id="loginSubmit" class="submit-btn">Entrar</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- CADASTRO BOX -->
+      <form onsubmit="event.preventDefault(); cadastrar(event);">
+        <div id="cadastroOverlay" class="login-overlay">
+          <div class="login-box">
+            <button class="close-btn" onclick="fecharCadastro()">X</button>
+            <h2>Cadastro</h2>
+            <label for="user-name">Nome de usuário:</label>
+            <div class="divInputEmail">
+              <i class="fas fa-user-alt"></i>
+              <input
+                id="nomeUsu"
+                type="text"
+                placeholder="Digite seu nome de usuário"
+                required
+              />
+            </div>
+            <label for="email-cad">Email:</label>
+            <div class="divInputEmail">
+              <i class="fas fa-envelope"></i>
+              <input
+                type="email"
+                id="emailCad"
+                placeholder="Digite seu email"
+                required
+              />
+              <p class="temNaSenha" id="erroEmail" style="display: none">
+                Digite um e-mail válido
+              </p>
+            </div>
+            <label for="senha-cad">Senha:</label>
+            <div class="divInputEmail">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                id="senhaCad"
+                placeholder="Crie uma senha"
+                onkeyup="verificaSenha()"
+                required
+                onpaste="return false"
+                oncopy="return false"
+                oncut="return false"
+                ondrop="return false"
+              />
+              <i
+                onclick="mostraSenhaCad()"
+                id="olhoSenhaCad"
+                class="fa fa-eye"
+                aria-hidden="true"
+              ></i>
+            </div>
+            <div class="divRequisitos">
+              <p class="temNaSenha" id="8cacracteres">
+                • Pelo menos 8 caracteres
+              </p>
+              <p class="temNaSenha" id="maiusculo">
+                • Pelo menos 1 letra maiúscula
+              </p>
+              <p class="temNaSenha" id="umNumero">• Pelo menos 1 número</p>
+              <p class="temNaSenha" id="caractereEsp">
+                • Pelo menos 1 caractere especial
+              </p>
+            </div>
+            <label for="confirma-senha">Confirmar Senha:</label>
+            <div class="divInputEmail">
+              <i class="fas fa-lock"></i>
+              <input
+                id="confSenha"
+                type="password"
+                placeholder="Repita a senha"
+                required
+                onpaste="return false"
+                oncopy="return false"
+                oncut="return false"
+                ondrop="return false"
+              />
+            </div>
+            <p onclick="fecharCadastro(); abrirLogin();">
+              Já é usuário ? <a>Clique aqui</a>
+            </p>
+            <button type="submit" class="submit-btn">Cadastrar</button>
+          </div>
+        </div>
+      </form>
+<!-- CUSTOM ALERTS -------------------------------------------------------------------------------------------------------------------------- -->
+      <div id="customAlert" class="alertBox">
+        <div class="alertContent">
+          <img class="imgAlert" src="img/certo.png" alt="" />
+          <h2 id="h2AlertPrincipal">Alert!</h2>
+          <p id="alertContentP">This is a custom alert box.</p>
+          <button class="button-cad" id="confirmBtn">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- SCRIPTS -------------------------------------------------------------------------------------------------------------------------- -->
+  <script src="js/funcCadLog.js"></script>
+  <script>
+    const emailInput = document.getElementById("emailCad");
+    const erroEmail = document.getElementById("erroEmail");
+
+    emailInput.addEventListener("input", () => {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (regex.test(emailInput.value)) {
+        erroEmail.style.display = "none";
+      } else {
+        erroEmail.style.display = "block";
+      }
+    });
+  </script>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2f1d3d" />
+    <title>Atropos</title>
+  </head>
+
+  <body class="bodyAtro">
+    <!-- LOADING SCREEN -------------------------------------------------------------------------------------------------------------------------- -->
+    <div id="loadingOverlay">
+      <img class="spinner" src="img/iconeLoading.png" alt="" />
+      <p>Carregando...</p>
+    </div>
+
+    <div id="content" class="content">
+      <!-- NAVBAR -------------------------------------------------------------------------------------------------------------------------- -->
+      <div class="navbar">
+        <div onclick="toggleDropdownImgNav(this)" class="imget">
+          <img
+            class="imagemnav imgnav"
+            id="imgNav"
+            src="img/imgPerfDef.png"
+            alt=""
+          />
+          <div class="dropdown-imgnav">
+            <button onclick="abrirPerfil()" class="button-login">Perfil</button>
+            <button id="logoutBtn" class="button-cad">Deslogar</button>
+          </div>
+          <h1 id="nomeUsuario">Nome</h1>
+        </div>
+        <div class="logo">
+          <img src="img/logoNavBar.png" alt="">
+        </div>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <div class="botoesNav">
+          <button class="button-login button-trofeu" onclick="acessaTrofeu()">
+            Troféus
+          </button>
+          <div onclick="abreOfensiva()" class="divOfensiva">
+            <img class="iconEstrela" src="img/estrelaIcon.png" alt="" />
+            <h1 id="h1OfensivaNav">0</h1>
+          </div>
+        </div>
+      </div>
+      <div id="sideMenu" class="side-menu">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="divImgSide">
+          <img
+            class="imagemnavSide imgnav"
+            id="imgNavMob"
+            src="img/imgPerfDef.png"
+            alt=""
+            onclick="abrirPerfil()"
+          />
+        </div>
+        <h1 id="nomeUsuarioMob">Nome</h1>
+        <a onclick="deslogar()">Início</a>
+        <a href="creditos.html">Créditos</a>
+        <button class="button-login" onclick="abrirPerfil()">Perfil</button>
+        <button class="button-cad" onclick="acessaTrofeu()">Troféus</button>
+      </div>
+      <!-- MAIN 1.7 -------------------------------------------------------------------------------------------------------------------------- -->
+      <div class="mainAtro">
+        <div class="fundoCalen" id="fundoCalen">
+          <div class="headCalen">
+            <button class="volAvanMes" onclick="mudarMes(-1)"><</button>
+            <h1 class="h1mes" id="h1mes"></h1>
+            <button class="volAvanMes" onclick="mudarMes(1)">></button>
+          </div>
+          <div class="calendario" id="calendario"></div>
+        </div>
+
+        <div id="mostraInfo" class="mostraInfo"></div>
+        <div class="listaMain" id="listaMain">
+          <div onclick="toggleDropdownAjusta(this)" class="ajusta">
+            <div class="inputTarefa">
+              <input
+                id="procurarTarefa"
+                onkeyup="procuraTarefaInput(event)"
+                placeholder="Procurar tarefa"
+                class="procurarTarefa"
+              />
+            </div>
+            <div class="divOrdena">
+              <label>Ordenar</label><i class="fa-solid fa-sort"></i>
+              <div class="dropdown-ajusta">
+                <button class="button-cad" onclick="organizaDia()">Dia</button>
+                <button class="button-cad" onclick="organizaImportancia()">
+                  Importancia
+                </button>
+                <button class="button-cad" onclick="organizaRecente()">
+                  Recente
+                </button>
+              </div>
+            </div>
+          </div>
+          <div id="lista" class="lista"></div>
+        </div>
+      </div>
+      <div class="caixaConfirmar"></div>
+      <!-- PERFIL -->
+      <div class="perfil">
+        <div class="caixa">
+          <div>
+            <button onclick="fecharPerf()" class="close-btn">×</button>
+          </div>
+          <div class="headPerfil">
+            <p>Tamanho recomendado 256x256px</p>
+            <div class="boxImg">
+              <form
+                method="post"
+                enctype="multipart/form-data"
+                onsubmit="event.preventDefault();"
+              >
+                <input
+                  type="file"
+                  id="imgInput"
+                  name="file"
+                  accept="image/*"
+                  onchange="previewImage(event)"
+                  style="display: none"
+                />
+                <img
+                  class="imgPerf"
+                  id="imgPerf"
+                  src="img/imgPerfDef.png"
+                  alt=""
+                />
+                <div class="imgPerfEdit">
+                  <img id="imgTroca" src="img/substitui.png" alt="Trocar" />
+                </div>
+              </form>
+            </div>
+            <label for="">Pontos:</label><label id="labelPontosPerf">0</label>
+            <div class="infoPerfil">
+              <h1 id="nomeUsuarioPerf"></h1>
+              <label for="" onclick="abreAlterarNome()">alterar</label>
+            </div>
+          </div>
+          <div class="bodyPerfil">
+            <div class="itensPerfil">
+              <h2 id="emailPerf">Email</h2>
+              <label for="" onclick="abreAlterarEmail()">alterar</label>
+            </div>
+            <div class="itensPerfil">
+              <h2>Senha</h2>
+              <label for="" onclick="abreAlterarSenha()">alterar</label>
+            </div>
+            <div class="itensPerfil">
+              <button class="button-cad" onclick="abreTarefasConcluidas()">
+                Tarefas concluidas
+              </button>
+              <button class="button-excluirUsu" onclick="abrirExcluirUsu()">
+                Excluir Usuario
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- EXCLUIR USUARIO BOX -->
+      <div class="excluirUsuario">
+        <div class="caixa">
+          <div>
+            <button onclick="fecharExcluirUsu()" class="close-btn">×</button>
+          </div>
+          <div class="headExcluirUsu">
+            <h1>Excluir Usuário</h1>
+          </div>
+          <div class="bodyExcluirUsu">
+            <p>Tem certeza que deseja excluir sua conta ?</p>
+            <div class="botoesAlterarNome">
+              <button class="button-excluirUsu" onclick="excluirDoBancoUsu()">
+                Confirmar
+              </button>
+              <button class="button-cad" onclick="fecharExcluirUsu()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- TAREFAS CONCLUIDAS BOX -->
+      <div class="tarefasConcluidas">
+        <div class="caixa">
+          <div>
+            <button onclick="fecharTarefasConcluidas()" class="close-btn">
+              ×
+            </button>
+          </div>
+          <div class="headTarefasConcluidas">
+            <h1>Tarefas Concluídas</h1>
+          </div>
+          <div id="listaTarefasConcluidas" class="bodyTarefasConcluidas"></div>
+        </div>
+      </div>
+      <!-- ALTERAR NOME BOX -->
+      <div class="alterarNome">
+        <div class="caixa">
+          <div>
+            <button onclick="fecharAlterarNome()" class="close-btn">×</button>
+          </div>
+          <div class="headAlterarNome">
+            <h1>Alterar Nome</h1>
+          </div>
+          <div class="bodyAlterarNome">
+            <div>
+              <i class="fas fa-user-alt"></i>
+              <input
+                type="text"
+                id="novoNome"
+                placeholder="Novo Nome"
+                required
+              />
+            </div>
+            <div class="botoesAlterarNome">
+              <button
+                type="submit"
+                class="button-cad"
+                onclick="updateUsuario('nome', event)"
+              >
+                Confirmar
+              </button>
+              <button class="button-excluirUsu" onclick="fecharAlterarNome()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ALTERAR EMAIL BOX -->
+      <form onsubmit="event.preventDefault(); updateUsuario('email', event);">
+        <div class="alterarEmail">
+          <div class="caixa">
+            <div>
+              <button onclick="fecharAlterarEmail()" class="close-btn">
+                ×
+              </button>
+            </div>
+            <div class="headAlterarNome">
+              <h1>Alterar Email</h1>
+            </div>
+            <div class="bodyAlterarNome">
+              <div>
+                <i class="fas fa-envelope"></i>
+                <input
+                  type="email"
+                  id="novoEmail"
+                  placeholder="Novo Email"
+                  required
+                />
+              </div>
+              <p class="temNaSenha" id="erroEmail" style="display: none">
+                Digite um e-mail válido
+              </p>
+              <div class="botoesAlterarNome">
+                <button type="submit" class="button-cad">Confirmar</button>
+                <button
+                  class="button-excluirUsu"
+                  onclick="fecharAlterarEmail()"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- ALTERAR SENHA BOX -->
+      <div class="alterarSenha">
+        <div class="caixa">
+          <div>
+            <button onclick="fecharAlterarSenha()" class="close-btn">×</button>
+          </div>
+          <div class="headAlterarNome">
+            <h1>Alterar Senha</h1>
+          </div>
+          <div class="bodyAlterarNome">
+            <div class="divSenhaAntiga">
+              <i class="fas fa-lock-open"></i>
+              <input
+                type="text"
+                id="senhaAntiga"
+                placeholder="Senha antiga"
+                required
+                onpaste="return false"
+                oncopy="return false"
+                oncut="return false"
+                ondrop="return false"
+              />
+            </div>
+            <div class="divSenhaNova">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                id="senhaNova"
+                onkeyup="verificaSenha()"
+                placeholder="Senha Nova"
+                required
+                onpaste="return false"
+                oncopy="return false"
+                oncut="return false"
+                ondrop="return false"
+              />
+              <i
+                onclick="mostraSenha()"
+                id="olhoSenhaNova"
+                class="fa fa-eye"
+                aria-hidden="true"
+              ></i>
+            </div>
+            <div class="divRequisitos">
+              <p class="temNaSenha" id="8cacracteres">
+                • Pelo menos 8 caracteres
+              </p>
+              <p class="temNaSenha" id="maiusculo">
+                • Pelo menos 1 letra maiúscula
+              </p>
+              <p class="temNaSenha" id="umNumero">• Pelo menos 1 número</p>
+              <p class="temNaSenha" id="caractereEsp">
+                • Pelo menos 1 caractere especial
+              </p>
+            </div>
+            <div class="botoesAlterarNome">
+              <button
+                type="submit"
+                class="button-cad"
+                onclick="updateUsuario('senha', event)"
+              >
+                Confirmar
+              </button>
+              <button class="button-excluirUsu" onclick="fecharAlterarSenha()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- OFENSIVA BOX -->
+      <div class="ofensiva">
+        <div class="caixa">
+          <div>
+            <button onclick="fecharOfensiva()" class="close-btn">×</button>
+          </div>
+          <img class="imgBodyOfensiva" id="trofeuAtual" src="" alt="" />
+          <h1 id="h1OfensivaBody">0</h1>
+          <h1>Dia</h1>
+          <div class="semana">
+            <div class="semanaOfensivaE">
+              <div class="semanaOfensivaD">
+                <img class="estrela" src="img/estrela_lock.png" alt="" />
+                <h3>Seg.</h3>
+              </div>
+              <div class="semanaOfensivaD">
+                <img class="estrela" src="img/estrela_lock.png" alt="" />
+                <h3>Ter.</h3>
+              </div>
+              <div class="semanaOfensivaD">
+                <img class="estrela" src="img/estrela_lock.png" alt="" />
+                <h3>Qua.</h3>
+              </div>
+              <div class="semanaOfensivaD">
+                <img class="estrela" src="img/estrela_lock.png" alt="" />
+                <h3>Qui.</h3>
+              </div>
+              <div class="semanaOfensivaD">
+                <img class="estrela" src="img/estrela_lock.png" alt="" />
+                <h3>Sex.</h3>
+              </div>
+              <div class="semanaOfensivaD">
+                <img class="estrela" src="img/estrela_lock.png" alt="" />
+                <h3>Sab.</h3>
+              </div>
+              <div class="semanaOfensivaD">
+                <img class="estrela" src="img/estrela_lock.png" alt="" />
+                <h3>Dom.</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- FOOTER -------------------------------------------------------------------------------------------------------------------------- -->
+      <footer>
+        <p>Atropos</p>
+        <p>|</p>
+        <a href="creditos.html">
+          <p>Créditos</p>
+        </a>
+      </footer>
+      <!-- CUSTOM ALERTS -------------------------------------------------------------------------------------------------------------------------- -->
+      <div id="customAlert" class="alertBox">
+        <div class="alertContent">
+          <img class="imgAlert" src="img/certo.png" alt="" />
+          <h2 id="h2AlertPrincipal">Alerta!</h2>
+          <p id="alertContentP">...</p>
+          <button class="button-cad" id="confirmBtn">Confirmar</button>
+        </div>
+      </div>
+      <div id="customExit" class="alertExit">
+        <div class="alertContentExit">
+          <img class="imgAlert" src="img/aviso.png" alt="" />
+          <h2 id="h2AlertPrincipal">Alerta!</h2>
+          <p>Deseja voltar ao inicio ?</p>
+          <div class="btnsAlert">
+            <button class="button-cad" id="confirmExitBtn">Confirmar</button>
+            <button class="button-excluirUsu" id="backBtn">Voltar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- SCRIPTS -------------------------------------------------------------------------------------------------------------------------- -->
+  <script src="js/jsAtropos.js"></script>
+  <script>
+    function toggleMenu() {
+      const sideMenu = document.getElementById("sideMenu");
+      if (sideMenu.style.left === "0px") {
+        sideMenu.style.left = "-250px";
+      } else {
+        sideMenu.style.left = "0px";
+      }
+    }
+  </script>
+  <script>
+    const novoEmail = document.getElementById("novoEmail");
+    const erroEmail = document.getElementById("erroEmail");
+
+    novoEmail.addEventListener("input", () => {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (regex.test(novoEmail.value)) {
+        erroEmail.style.display = "none";
+      } else {
+        erroEmail.style.display = "block";
+      }
+    });
+  </script>
+</html>

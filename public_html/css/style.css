@@ -1,0 +1,2060 @@
+@import url("https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap");
+
+/* ==============================
+   RESET & BASE
+   ============================== */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+body {
+  background: linear-gradient(135deg, #ebf6fb, #d2e6ea);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+.bodyMenu {
+  background-image: url("../img/bg.png");
+  background-color: rgb(0, 0, 0);
+}
+
+.bodyAtro {
+  background-color: #d2e6ea;
+  background-image: url("../img/imgLogoFundo.png");
+  background-repeat: no-repeat;
+  background-size: 100vh;
+  background-position: center ;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+p {
+  color: rgb(245, 239, 231);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* ==============================
+   LOADING SCREEN
+   ============================== */
+
+.content{
+  display: none;
+}
+
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1d061c; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+  transition: opacity 0.5s ease; 
+}
+
+.spinner {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spinJump 1.5s ease-in-out infinite;
+}
+
+@keyframes spinJump {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.97);
+  }
+  50% {
+    transform: translateY(-50px) rotate(0deg) scale(0.97);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg) scale(0.97);
+  }
+}
+
+/* ==============================
+   FUNDO & FOOTER
+   ============================== */
+.fundo {
+  background-color: #1d061c;
+  height: 100vh;
+  width: 50vw;
+  position: fixed;
+  z-index: -1;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  z-index: 3;
+  background-color: #00000024;
+}
+
+footer p {
+  margin-left: 1vw;
+  color: rgb(255, 255, 255);
+}
+
+.loginclick:hover {
+  cursor: pointer;
+}
+
+.cadastroClick:hover {
+  cursor: pointer;
+}
+
+/* ==============================
+   NAVBAR GERAL
+   ============================== */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #dec08a;
+  height: 8vh;
+}
+
+.navbar h1 {
+  margin-left: 1vw;
+  font-family: "Zain", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-size: 2rem;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 19vh;
+}
+
+.hamburger,
+.menu-toggle {
+  display: none;
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.side-menu {
+  font-family: "Zain", sans-serif;
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  background: #dec08a;
+  padding-top: 60px;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 999;
+}
+
+.side-menu a {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 1.2em;
+}
+
+.side-menu a:hover {
+  background: #333;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.imagemnavSide {
+  display: none;
+}
+
+.button-login,
+.button-cad,
+.button-next,
+.button-previous,
+.button-excluirUsu {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 18px;
+  border-radius: 34px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  z-index: 19;
+}
+
+.menu-items {
+  gap: 10px;
+}
+
+.menu-items a {
+  display: none;
+}
+
+.button-trofeu {
+  margin-right: 1vw;
+}
+
+.button-login {
+  color: #2f1d3d;
+  border: 2px solid #2f1d3d;
+  background-color: transparent;
+  margin: 0 5px;
+}
+
+.button-login::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #2f1d3d;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.button-login:hover::before {
+  scale: 3;
+}
+
+.button-login:hover {
+  color: rgb(245, 239, 231);
+  scale: 1;
+  box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
+}
+
+.button-login:active {
+  scale: 1;
+}
+
+.button-cad,
+.button-next,
+.button-previous,
+.button-excluirUsu {
+  color: rgb(245, 239, 231);
+  border: 2px solid #2f1d3d;
+  background-color: #2f1d3d;
+}
+
+.button-cad:hover,
+.button-next:hover,
+.button-previous:hover {
+  scale: 1;
+  box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
+}
+
+.imagemnav {
+  height: 8vh;
+  border-radius: 1000px;
+}
+
+/* ==============================
+   ELEMENTOS MENU
+   ============================== */
+.imget {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6vw;
+}
+
+.submain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 60vh;
+}
+
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-hover {
+  display: none;
+}
+
+/* Blocos de menu (e1, e2, e3, e4) */
+.e1,
+.e2,
+.e3,
+.e4 {
+  background-color: #2f1d3d;
+  width: 35vw;
+  height: 10vh;
+  margin: 1vh;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.e1:hover,
+.e2:hover,
+.e3:hover,
+.e4:hover {
+  height: auto;
+  z-index: 999;
+  scale: calc(1.1);
+}
+
+.e1:hover .text-normal,
+.e2:hover .text-normal,
+.e3:hover .text-normal,
+.e4:hover .text-normal {
+  display: none;
+}
+
+.e1:hover .text-hover,
+.e2:hover .text-hover,
+.e3:hover .text-hover,
+.e4:hover .text-hover {
+  display: inline;
+}
+
+.e1:hover p,
+.e2:hover p,
+.e3:hover p,
+.e4:hover p {
+  margin: 30px;
+}
+
+/* Imagem principal */
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35vw;
+  height: 100%;
+}
+
+.imgmain {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Login modal */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.login-box {
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 10px;
+  width: 25vw;
+  max-height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  box-shadow: 0 0 10px #000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0px 8px 16px #1b0418;
+  animation: Top 0.5s ease 0s 1 normal forwards;
+}
+
+.login-box i {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.login-box .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.naoTem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.esqueceu {
+  font-size: 1.1rem;
+  font-family: "Zain", sans-serif;
+}
+
+input {
+  padding: 8px;
+  font-size: 1.3rem;
+  border: none;
+  border-bottom: 1px solid #757575;
+  width: 20vw;
+  background: transparent;
+  font-family: "Zain", sans-serif;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 2px solid hsl(177, 69%, 45%);
+}
+
+.submit-btn {
+  margin-top: 1vh;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-box p {
+  color: #000;
+  font-family: "Zain", sans-serif;
+}
+
+.login-box a {
+  color: #00bebe;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.divInputEmail,
+.divInputEmailf {
+  width: 28vw;
+}
+
+.divInputEmail {
+  display: flex;
+  flex-direction: row;
+}
+
+.divInputEmailf {
+  margin-bottom: 10px;
+}
+
+.iconGEF {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 15px;
+}
+
+.iconGEF i {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.divRequisitos {
+  margin-bottom: 10px;
+}
+
+p.temNaSenha {
+  font-size: 1rem;
+  color: red;
+}
+
+/* ==============================
+   ELEMENTOS ESQUECEU
+   ============================== */
+
+.mainEsqueceu {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.botoesEnviaEmail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30vw;
+  margin-top: 15px;
+}
+
+.validacaoInputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.validacaoInputs input {
+  width: 1vw;
+  border: 2px solid #000;
+  margin: 1vw;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.caixaEsqueceu {
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 10px;
+  width: 30vw;
+  position: relative;
+  box-shadow: 0 0 10px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 8px 16px #1b0418;
+  font-family: "Zain", sans-serif;
+}
+
+.caixaEsqueceu.hidden {
+  display: none;
+}
+
+.tokenMinutos {
+  color: #000;
+}
+.inputEsqueceuEmail {
+  display: flex;
+  justify-content: center;
+}
+.inputEsqueceuEmail i {
+  margin-top: 15px;
+}
+.headerPassoEmail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==============================
+   ELEMENTOS ATROPOS
+   ============================== */
+
+.perfil {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.caixa {
+  background-color: #fff;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  border-radius: 10px;
+  width: clamp(90%, 60vw, 30vw);
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0px 8px 16px #1b0418;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Zain", sans-serif;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: Top 0.5s ease 0s 1 normal forwards;
+}
+
+.headPerfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  margin-bottom: 2vh;
+  gap: 10px;
+}
+
+.headPerfil p {
+  color: #000;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.boxImg {
+  position: relative;
+  display: inline-block;
+  width: clamp(100px, 25vw, 150px);
+  height: clamp(100px, 25vw, 150px);
+}
+
+.imgPerf {
+  height: 100%;
+  width: 100%;
+  border-radius: 1000px;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+.imgPerfEdit {
+  position: absolute;
+  inset: 0;
+  border-radius: 1000px;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.boxImg:hover .imgPerfEdit {
+  opacity: 1;
+}
+
+.infoPerfil {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(15px, 4vw, 40px);
+  text-align: center;
+}
+
+.infoPerfil label {
+  font-size: clamp(1rem, 1.6vw, 1.6rem);
+  color: rgba(80, 77, 77, 0.592);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.bodyPerfil {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+.itensPerfil {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.itensPerfil h2 {
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  color: rgb(0, 0, 0);
+}
+
+.itensPerfil label {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  color: rgba(80, 77, 77, 0.592);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.itensPerfil button {
+  overflow: visible;
+  white-space: wrap;
+}
+
+.button-excluirUsu {
+  background-color: red;
+  border: 2px solid red;
+}
+
+.excluirUsuario,
+.tarefasConcluidas,
+.alterarNome,
+.alterarEmail,
+.alterarSenha,
+.ofensiva {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.bodyExcluirUsu p {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  margin-bottom: 3vh;
+  color: rgb(0, 0, 0);
+}
+
+.bodyAlterarNome {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  align-items: center;
+}
+
+.botoesAlterarNome {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 2vh;
+  gap: 10px;
+}
+
+.divSenhaAntiga {
+  margin-left: 0;
+}
+
+.dropdown-imgnav,
+.dropdown-bolinha,
+.dropdown-tres,
+.dropdown-impor,
+.dropdown-ajusta {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  animation: Top 0.5s ease 0s 1 normal forwards;
+}
+
+.dropdown-imgnav {
+  top: 10%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.imgnav {
+  cursor: pointer;
+}
+
+.botoesNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.botoesNav i {
+  font-size: 2rem;
+}
+
+.botoesNav h1 {
+  margin-top: 1vh;
+}
+
+.divOfensiva {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: clamp(50px, 7vw, 120px);
+  cursor: pointer;
+}
+
+.semana {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: clamp(200px, 20vw, 400px);
+  height: clamp(60px, 10vh, 120px);
+}
+
+.semanaOfensivaD {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(3px, 0.5vw, 8px);
+}
+.semanaOfensivaE {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(10px, 3vw, 40px);
+}
+.iconEstrela {
+  width: 25px;
+}
+.estrela {
+  width: clamp(25px, 4vw, 45px);
+}
+
+.imgBodyOfensiva {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.mainAtro {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.fundoCalen {
+  width: 45vw;
+  height: auto;
+  background-color: #ffffff;
+  margin: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.fundoCalenAnimacao {
+  animation: Calendario 0.5s ease 0s 1 normal forwards;
+}
+
+.headCalen {
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 20vw;
+  color: rgb(0, 0, 0);
+  font-family: "Zain", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.volAvanMes {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+}
+
+table {
+  width: 35vw;
+  height: 63vh;
+  border: none;
+  color: rgb(0, 0, 0);
+  margin-bottom: 1vh;
+  table-layout: fixed;
+}
+
+td,
+th {
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+  padding: 0;
+}
+
+.dias {
+  border: 2px solid rgba(0, 0, 0, 0);
+  font-family: "Zain", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.dias:hover {
+  border: 2px solid rgba(80, 77, 77, 0.592);
+  cursor: pointer;
+}
+
+.mostraInfo {
+  width: 20vw;
+  height: auto;
+  display: none;
+  border-radius: 10px;
+  flex-direction: column;
+  background-color: #fffffff0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 99;
+}
+
+.mostraInfo {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.mostraInfo p {
+  font-size: 1.3rem;
+  color: rgb(0, 0, 0);
+  margin: 10px;
+}
+
+.subMostraInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  margin-top: 3vh;
+}
+
+.diaSelec {
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  font-family: "Zain", sans-serif;
+  font-size: 3rem;
+}
+
+label {
+  font-size: 1.8rem;
+  margin-right: 0.5vw;
+  font-family: "Zain", sans-serif;
+}
+
+.inputMateria {
+  width: 10vw;
+  color: inherit;
+  padding: 8px;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 1px solid #757575;
+  background-color: transparent;
+}
+
+.inputMaterial:focus {
+  background: transparent;
+  outline: transparent;
+  border-bottom: 2px solid hsl(196, 69%, 45%);
+}
+
+.divInput {
+  width: min-content;
+}
+
+.bolinha {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #757575;
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-bolinha {
+  top: 100%;
+  display: flex;
+}
+
+.cor {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divColorPicker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#colorPicker {
+  visibility: hidden;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+}
+
+
+.tresPontinhos {
+  cursor: pointer;
+}
+
+.dropdown-tres {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 1vh;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.mainImpor {
+  display: flex;
+  justify-content: center;
+}
+
+.importancia {
+  margin: 20px;
+}
+
+.dropdown-impor {
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10vh;
+}
+
+.dropdown-impor label {
+  margin: 2px;
+  border-bottom: #000000 solid;
+  font-size: 1.1rem;
+  padding: 12px 16px;
+}
+
+.dropdown-impor label:hover {
+  background-color: #c2bebe;
+}
+
+.l1:hover {
+  border-bottom: red solid;
+}
+
+.l2:hover {
+  border-bottom: yellow solid;
+}
+
+.l3:hover {
+  border-bottom: lime solid;
+}
+
+.textArea {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.textArea textarea {
+  resize: none;
+  height: 13vh;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.botoesInfo,
+.carrossel-botoes {
+  display: flex;
+  justify-content: space-around;
+  margin: 5px;
+}
+
+.carrossel-botoes {
+  margin-top: 3vh;
+}
+
+.indicadorDoCarrossel {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.bolinhaCarrossel {
+  width: 10px;
+  height: 10px;
+  background: gray;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+
+.bolinhaCarrossel.ativo {
+  background: blue;
+}
+
+.procurarTarefa{
+  margin-right: 2vw;
+}
+
+.listaMain {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 30vw;
+  height: 73vh;
+  border-radius: 10px;
+  background-color: #fffffff0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 0;
+}
+
+.listaMainAnimacao {
+  animation: Lista 0.5s ease 0s 1 normal forwards;
+}
+
+.ajusta {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 30vw;
+  height: 4vh;
+  margin-top: 1.5vh;
+}
+
+.ajusta input {
+  margin: 10px;
+  margin-top: 15px;
+  padding: 0px;
+  width: 12vw;
+  margin-left: 2vw;
+  margin-top: 1vh;
+}
+
+.ajusta i,
+.ajusta label {
+  font-size: 1rem;
+  margin-right: 1vw;
+  margin-top: 1vh;
+  cursor: pointer;
+}
+
+.divOrdena {
+  position: relative;
+  display: flex;
+}
+
+.dropdown-ajusta {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  flex-direction: column;
+  background: white;
+  padding: 5px;
+  border-radius: 8px;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.listaSubMain {
+  width: 28vw;
+  height: auto;
+  margin: 10px;
+  background-color: #757575;
+  cursor: pointer;
+  font-family: "Zain", sans-serif;
+}
+
+.lista {
+  margin-top: 1vh;
+}
+
+.listaElements {
+  display: flex;
+  justify-content: space-between;
+  margin: 4px;
+  width: 28vw;
+  height: auto;
+  overflow: auto;
+}
+
+.listaElements p,
+.listaElements h1 {
+  color: white;
+}
+
+.listaElements p {
+  font-size: 1.4rem;
+  margin-right: 10px;
+}
+
+.subTitulo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 28vw;
+  overflow: auto;
+}
+
+.subTitulo p {
+  margin: 4px;
+}
+
+.caixaConfirmar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.confirmar {
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 10px;
+  width: 30vw;
+  position: relative;
+  box-shadow: 0 0 10px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0px 8px 16px #1b0418;
+  font-family: "Zain", sans-serif;
+}
+.botoesConf {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tituloConfirmar {
+  font-size: 2rem;
+  margin-bottom: 2vh;
+}
+
+.infoConf p {
+  font-size: 1.2rem;
+  margin-bottom: 3vh;
+  color: rgb(0, 0, 0);
+}
+.bodyTarefasConcluidas {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+/* ==============================
+  TROFEUS
+ ============================== */
+.mainTrofeu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: visible;
+  position: static;
+  z-index: auto;
+}
+
+.titulosPontos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: "Zain", sans-serif;
+  margin-top: 5vh;
+}
+
+.titulosOfensiva {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: "Zain", sans-serif;
+  margin-top: 5vh;
+}
+.trofeusDePontos,
+.trofeusDeOfensiva {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: 45vh;
+  overflow: visible;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  position: relative;
+  animation: Top 0.5s ease 0s 1 normal forwards;
+}
+
+.porcentagem {
+  font-family: "Zain", sans-serif;
+  font-size: 1.4rem;
+  margin-top: 2vh;
+}
+
+.trofeu100P,
+.trofeu250P,
+.trofeu500P,
+.trofeu750P,
+.trofeu1000P {
+  width: clamp(80px, 15vw, 180px);
+  z-index: 30;
+}
+
+.trofeu7,
+.trofeu30,
+.trofeu60,
+.trofeu180,
+.trofeu270,
+.trofeu365 {
+  width: clamp(60px, 10vw, 160px);
+}
+
+.divTrofeu100P,
+.divTrofeu250P,
+.divTrofeu500P,
+.divTrofeu750P,
+.divTrofeu1000P {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  width: clamp(130px, 15vw, 200px);
+  height: auto;
+  position: relative;
+  box-shadow: 0 0 10px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 8px 16px #1b0418;
+  font-family: "Zain", sans-serif;
+  transition: all 0.9s ease-in-out;
+}
+
+.divTrofeu7,
+.divTrofeu30,
+.divTrofeu60,
+.divTrofeu180,
+.divTrofeu270,
+.divTrofeu365 {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  width: clamp(100px, 10vw, 160px);
+  height: auto;
+  position: relative;
+  box-shadow: 0 0 10px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 8px 16px #1b0418;
+  font-family: "Zain", sans-serif;
+  transition: all 0.9s ease-in-out;
+}
+
+.desbloqueado:hover {
+  box-shadow: 0 0 10px gold;
+}
+
+.divTrofeu100P .porcentagem,
+.divTrofeu250P .porcentagem,
+.divTrofeu500P .porcentagem,
+.divTrofeu750P .porcentagem,
+.divTrofeu1000P .porcentagem {
+  display: none;
+}
+
+.divTrofeu7 .porcentagem,
+.divTrofeu30 .porcentagem,
+.divTrofeu60 .porcentagem,
+.divTrofeu180 .porcentagem,
+.divTrofeu270 .porcentagem,
+.divTrofeu365 .porcentagem {
+  display: none;
+}
+
+.divTrofeu100P:hover,
+.divTrofeu250P:hover,
+.divTrofeu500P:hover,
+.divTrofeu750P:hover,
+.divTrofeu1000P:hover {
+  transform: scale(1.1);
+  z-index: 99;
+  transform-origin: center bottom;
+}
+
+.divTrofeu7:hover,
+.divTrofeu30:hover,
+.divTrofeu60:hover,
+.divTrofeu180:hover,
+.divTrofeu270:hover,
+.divTrofeu365:hover {
+  transform: scale(1.1);
+  z-index: 99;
+  transform-origin: center bottom;
+}
+
+.divTrofeu100P:hover .porcentagem,
+.divTrofeu250P:hover .porcentagem,
+.divTrofeu500P:hover .porcentagem,
+.divTrofeu750P:hover .porcentagem,
+.divTrofeu1000P:hover .porcentagem {
+  display: inline;
+}
+
+.divTrofeu7:hover .porcentagem,
+.divTrofeu30:hover .porcentagem,
+.divTrofeu60:hover .porcentagem,
+.divTrofeu180:hover .porcentagem,
+.divTrofeu270:hover .porcentagem,
+.divTrofeu365:hover .porcentagem {
+  display: inline;
+}
+
+.trofeuMob {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 45vh;
+  overflow: visible;
+  box-sizing: border-box;
+  position: relative;
+}
+
+progress {
+  width: 100%;
+  margin-top: 2vh;
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #8e24aa;
+  border-radius: 10px;
+}
+/* ==============================
+  CREDITOS
+ ============================== */
+
+.bodyCred {
+  background: #d2e6ea;
+}
+
+.divMainCred {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 2vw;
+  justify-content: center;
+  background-color: #1d061ca9;
+  padding: 20px;
+  margin: 20px;
+  animation: Top 0.5s ease 0s 1 normal forwards;
+  border-radius: 10px;
+}
+
+.bloco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15vw;
+  height: fit-content;
+  background-color: #2f1d3d;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: "Zain", sans-serif;
+}
+
+.bloco img {
+  width: 10vw;
+  height: 20vh;
+  object-fit: cover;
+  margin-bottom: 1vh;
+}
+
+.bloco p {
+  text-align: center;
+  color: rgb(245, 239, 231);
+  margin-bottom: 6px;
+}
+
+/* ==============================
+   ALERTS
+   ============================== */
+
+.alertBox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.alertContent {
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 10px;
+  width: 20vw;
+  position: relative;
+  box-shadow: 0 0 10px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 8px 16px #1b0418;
+  font-family: "Zain", sans-serif;
+}
+
+.alertContent h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.alertContent p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.alertContent button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.imgAlert {
+  width: 110px;
+}
+
+.alertExit{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+.alertContentExit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 10px;
+  width: 20vw;
+  position: relative;
+  box-shadow: 0 0 10px #000;
+  box-shadow: 0px 8px 16px #1b0418;
+  font-family: "Zain", sans-serif;
+}
+
+.alertContentExit h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.alertContentExit p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.alertContentExit button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btnsAlert{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+/* ==============================
+   RESPONSIVIDADE
+   ============================== */
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .e1,
+  .e2,
+  .e3,
+  .e4,
+  .img-container {
+    width: 80vw;
+  }
+
+  .login-box {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ==============================
+ MENU MOBILE
+ ============================== */
+
+  .bodyAtro{
+    background-image: none;
+  }
+
+
+  .main {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 8px;
+    gap: 3px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .menu-toggle,
+  .hamburger {
+    display: block;
+  }
+
+  .imget,
+  .menu-items {
+    display: none;
+  }
+
+  .divImgSide {
+    width: 150px;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .imagemnavSide {
+    display: block;
+    border-radius: 1000px;
+    height: auto;
+    width: 20vw;
+  }
+
+  .navbar.active .imget,
+  .navbar.active .menu-items {
+    display: flex;
+    flex-direction: column;
+    background-color: #dec08a;
+    padding: 15px;
+  }
+
+  .menu-items button {
+    margin: 5px 0;
+  }
+
+  .logo,
+  .fundo,
+  footer,
+  .button-trofeu {
+    display: none;
+  }
+
+  .logo img{
+    height: 14vh;
+  }
+
+  .divInputEmail,
+  .divInputEmailf {
+    width: 40vw;
+  }
+
+  input {
+    width: 35vw;
+    font-size: 0.8rem;
+  }
+
+  .login-box label {
+    font-size: 1rem;
+  }
+
+  .menu-items a {
+    display: contents;
+  }
+
+  /* ==============================
+ESQUECEU MOBILE
+ ============================== */
+
+  .mainEsqueceu {
+    height: 100vh;
+  }
+  .caixaEsqueceu {
+    width: 70%;
+  }
+  .bodyPerfil {
+    gap: 0px;
+  }
+  .caixaEsqueceu input {
+    font-size: 1.4rem;
+    width: 100%;
+  }
+  .headerPassoEmail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .headerPassoEmail h2 {
+    font-size: 2rem;
+  }
+  .botoesEnviaEmail {
+    width: 80vw;
+    justify-content: space-between;
+  }
+  .inputEsqueceuEmail {
+    display: flex;
+    gap: 10px;
+  }
+  .inputEsqueceuEmail i {
+    margin-top: 15px;
+  }
+  .divSenhaNova input {
+    width: 55vw;
+  }
+
+  /* ==============================
+ATROPOS MOBILE
+ ============================== */
+
+  .mainAtro {
+    flex-direction: column;
+  }
+
+  .fundoCalen {
+    width: 90%;
+  }
+
+  .headCalen {
+    width: 50%;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .calendario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .listaMain {
+    width: 90vw;
+  }
+
+  .listaSubMain {
+    width: 80vw;
+  }
+
+  .subTitulo {
+    width: 90%;
+  }
+
+  .mostraInfo {
+    width: 85%;
+  }
+
+  .inputMateria {
+    width: 35vw;
+  }
+
+  .listaElements {
+    width: 90%;
+  }
+
+  .dropdown-tres {
+    margin-left: -24vw;
+  }
+
+  .dropdown-ajusta {
+    top: 100%;
+  }
+
+  .ajusta {
+    justify-content: space-between;
+    width: 90vw;
+  }
+
+  .ajusta input {
+    width: 40vw;
+  }
+
+  .divOrdena {
+    margin-right: 10px;
+  }
+
+  .perfil {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .caixa {
+    width: 70%;
+  }
+
+  .infoPerfil {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+  }
+
+  .itensPerfil {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .botoesPerfil {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .confirmar {
+    width: 70%;
+  }
+
+  .botoesConf {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .divAjusta {
+    z-index: 0;
+  }
+  .divSenhaAntiga{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    margin-right: 10px;
+  }
+  .divSenhaAntiga input{
+    width: 55vw;
+  }
+
+  /* ==============================
+  TROFEUS
+ ============================== */
+
+  .trofeusDePontos {
+    justify-content: flex-start;
+    height: 30vh;
+    flex-direction: column;
+    position: relative;
+    z-index: 0;
+  }
+  .trofeusDeOfensiva {
+    justify-content: flex-start;
+    height: 70vh;
+    margin-top: auto;
+    flex-direction: column;
+    position: relative;
+    z-index: 0;
+  }
+
+  .trofeuMob {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    position: relative;
+  }
+
+  .titulosPontos {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+
+  .titulosOfensiva {
+    margin-top: 40vh;
+  }
+
+  /* ==============================
+CREDITOS MOBILE
+ ============================== */
+
+  .divMainCred {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .bloco {
+    width: 80vw;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .bloco img {
+    width: 50vw;
+    height: 20vh;
+    object-fit: cover;
+    margin-bottom: 1vh;
+  }
+  /* ==============================
+CUSTOM ALERTS
+ ============================== */
+
+ .alertContentExit{
+  width: 50vw;
+ }
+ .alertExit{
+  display: none;
+ }
+
+ .alertContent{
+  width: 50vw;
+ }
+
+}
+
+  /* ==============================
+ANIMAÇÕES
+ ============================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(10px) scale(1);
+  }
+}
+
+@keyframes Top {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes Calendario {
+  0% {
+    opacity: 1;
+    transform: translateX(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes Lista {
+  0% {
+    opacity: 1;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.confetti-piece {
+  position: fixed;
+  width: 12px;
+  height: 20px;
+  top: -10px;
+  opacity: 0.9;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}

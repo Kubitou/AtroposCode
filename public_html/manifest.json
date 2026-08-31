@@ -1,0 +1,22 @@
+{
+  "name": "Atropos - Organize seu tempo",
+  "short_name": "Atropos",
+  "description": "Gerencie suas tarefas, metas e ofensiva diária com o Atropos.",
+  "start_url": "atropos.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2f1d3d",
+  "theme_color": "#2f1d3d",
+  "icons": [
+    {
+      "src": "img/icone192.png",
+      "sizes": "192x192",
+      "type": "img/png"
+    },
+    {
+      "src": "img/icone192.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="img/icone.ico">   
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2f1d3d"> 
+    <title>Esqueceu</title>
+</head>
+<body onload="carregaPasso()">
+<!-- NAVBAR -------------------------------------------------------------------------------------------------------------------------- -->
+    <!-- <div class="navbar">
+
+
+    </div> -->
+<!-- MAIN 1.7 -------------------------------------------------------------------------------------------------------------------------- -->
+    <div class="mainEsqueceu">
+      <div class="caixaEsqueceu" id="passoEmail">
+        <form id="formEsqueceu" onsubmit="enviarForm(event);">
+        <div class="headerPassoEmail">
+          <h2>Esqueceu a senha</h2>
+          <h1>Email</h1>
+        </div>
+        <div class="inputEsqueceuEmail">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="email" placeholder="Digite seu email" required>
+          <p class="temNaSenha" id="erroEmail" style="display:none;">Digite um e-mail válido</p>
+        </div>
+        <div class="botoesEnviaEmail">
+          <button type="submit" class="button-cad" id="btnEnviarEmail">Enviar email</button>
+          <button type="button" class="button-excluirUsu" id="btnCancelar" onclick="voltarParaIndex()">Cancelar</button>
+        </div>
+      </div>
+    </form>
+    <div class="caixaEsqueceu hidden" id="passoCodigo">
+      <h2>Verificação</h2>
+      <h1>Código</h1>
+      <div class="validacaoInputs">
+        <input type="text" id="codigo1" maxlength="1">
+        <input type="text" id="codigo2" maxlength="1">
+        <input type="text" id="codigo3" maxlength="1">
+        <input type="text" id="codigo4" maxlength="1">
+      </div>
+      <p class="tokenMinutos">Seu token expira em 30 minutos</p>
+      <div class="botoesEnviaEmail">
+        <button class="button-cad" id="btnEnviarCodigo">Verificar</button>
+        <button class="button-excluirUsu" id="btnCancelar2" onclick="voltarParaIndex()">Cancelar</button>
+      </div>
+    </div>
+
+    <div class="caixaEsqueceu hidden" id="passoSenha">
+            <h2>Recuperação</h2>
+            <div class="headAlterarNome">
+                <h1>Alterar Senha</h1>
+            </div>
+            <div class="bodyAlterarNome">
+                <div class="divSenhaNova">
+                    <i class='fas fa-lock'></i>
+                    <input type="password" id="senhaNova" onkeyup="verificaSenha()" placeholder="Nova senha" 
+                    required
+                    onpaste="return false"
+                    oncopy="return false"
+                    oncut="return false"
+                    ondrop="return false"
+                    >
+                    <i onclick="mostraSenha()" id="olhoSenhaNova" class="fa fa-eye" aria-hidden="true"></i>
+                </div>
+                <div class="divRequisitos">
+                    <p class="temNaSenha" id="8cacracteres">• Pelo menos 8 caracteres</p>
+                    <p class="temNaSenha" id="maiusculo">• Pelo menos 1 letra maiúscula</p>
+                    <p class="temNaSenha" id="umNumero">• Pelo menos 1 número</p>
+                    <p class="temNaSenha" id="caractereEsp">• Pelo menos 1 caractere especial</p>
+                </div>
+                <div class="divSenhaNova">
+                    <i class='fas fa-lock'></i>
+                    <input type="password" id="senhaConfirmar" placeholder="Confirmar senha" 
+                    required
+                    onpaste="return false"
+                    oncopy="return false"
+                    oncut="return false"
+                    ondrop="return false"                    
+                    >  
+                </div>
+                <div class="botoesAlterarNome">
+                    <button type="submit" class="button-cad" onclick="enviaSenhaNova()">Confirmar</button>
+                    <button class="button-excluirUsu" onclick="voltarParaIndex()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+<!-- FOOTER -------------------------------------------------------------------------------------------------------------------------- -->
+    <footer>
+        <p>Atropos</p>
+    </footer>
+<!-- CUSTOM ALERTS -------------------------------------------------------------------------------------------------------------------------- -->
+    <div id="customAlert" class="alertBox">
+        <div class="alertContent">
+          <img class="imgAlert" src="img/certo.png" alt="">
+          <h2 id="h2AlertPrincipal">Alert!</h2>
+          <p id="alertContentP">This is a custom alert box.</p>
+          <button class="button-cad" id="confirmBtn">Confirm</button>
+        </div>
+    </div>
+</body>
+<script src="js/jsEsqueceu.js"></script>
+</html>
